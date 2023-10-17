@@ -5395,10 +5395,68 @@
   },
   "networks": {
     "5777": {
-      "events": {},
+      "events": {
+        "0xe21fa966ca5cd02748c0752352d18c48165e61cb55b4c29cccf924b5a95fcff1": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "id",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "internalType": "bool",
+              "name": "completed",
+              "type": "bool"
+            }
+          ],
+          "name": "TaskCompleted",
+          "type": "event"
+        },
+        "0x05d0fb833127fc08168556d0e7ca9554fc3f6bc843b3b7d2bf1c35aea6bab660": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "id",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "internalType": "string",
+              "name": "content",
+              "type": "string"
+            },
+            {
+              "indexed": false,
+              "internalType": "bool",
+              "name": "completed",
+              "type": "bool"
+            }
+          ],
+          "name": "TaskCreated",
+          "type": "event"
+        },
+        "0xd078b251d950cc55c44340be1db732337ef4939a76e1367ee271ad2cb19c46af": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "id",
+              "type": "uint256"
+            }
+          ],
+          "name": "TaskDeleted",
+          "type": "event"
+        }
+      },
       "links": {},
-      "address": "0x1f97D43d0BEc207403f203B55daA2E73598069db",
-      "transactionHash": "0xd77879cfa9c9128cbb1f16b313bb9311d1282c0f3e1bdfefba2fefd9fa8ecacd"
+      "address": "0x0B1A25554cf9a52Aba035cA0e94e0fb3f51137cB",
+      "transactionHash": "0xd4c1d317402a45090865ca07cda937bdea7cbe565dc0da1ed72ee275726a31e7"
     },
     "1697475768540": {
       "events": {},
@@ -5465,7 +5523,7 @@
     }
   },
   "schemaVersion": "3.4.16",
-  "updatedAt": "2023-10-17T15:44:07.677Z",
+  "updatedAt": "2023-10-17T16:07:58.254Z",
   "networkType": "ethereum",
   "devdoc": {
     "kind": "dev",

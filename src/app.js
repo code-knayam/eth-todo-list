@@ -60,7 +60,7 @@ App = {
 			const taskId = task[0].toNumber();
 			const taskContent = task[1];
 			const taskCompleted = task[2];
-
+			console.log(task);
 			if (!taskId) continue;
 
 			const $newTemp = $taskTmp.clone();
