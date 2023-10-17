@@ -1,11 +1,12 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.14;
+pragma solidity 0.8.14;
 
 contract TodoList {
     uint public taskCount;
     mapping(uint => Task) public tasks;
     event TaskCreated(uint id, string content, bool completed);
     event TaskCompleted(uint id, bool completed);
+    event TaskDeleted(uint id);
 
     struct Task {
         uint id;
@@ -29,5 +30,10 @@ contract TodoList {
         _task.completed = !_task.completed;
         tasks[_id] = _task;
         emit TaskCompleted(_id, _task.completed);
+    }
+
+    function deleteTask(uint _id) public {
+        delete tasks[_id];
+        emit TaskDeleted(_id);
     }
 }

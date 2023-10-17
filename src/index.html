@@ -36,6 +36,12 @@
 				margin-bottom: 0px;
 			}
 
+			.taskTemplate {
+				display: flex;
+				justify-content: space-between;
+				margin: 16px 0;
+			}
+
 			#completedTaskList .content {
 				color: grey;
 				text-decoration: line-through;
@@ -70,6 +76,7 @@
 									<input type="checkbox" />
 									<span class="content">Task content goes here...</span>
 								</label>
+								<button id="delete">Delete</button>
 							</div>
 						</ul>
 						<ul id="completedTaskList" class="list-unstyled">
@@ -81,6 +88,8 @@
 
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		<script src="vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+
 		<!-- Include all compiled plugins (below), or include individual files as needed -->
 		<script src="vendor/web3/dist/web3.min.js"></script>
 		<script src="vendor/@truffle/contract/dist/truffle-contract.min.js"></script>

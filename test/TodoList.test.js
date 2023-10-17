@@ -36,4 +36,16 @@ contract("TodoList", (accounts) => {
 		assert.equal(event.id.toNumber(), 1);
 		assert.equal(event.completed, true);
 	});
+
+	it("delete task", async () => {
+		const result = await this.todoList.deleteTask(1);
+		const taskCount = await this.todoList.taskCount();
+		const task = await this.todoList.tasks(1);
+
+		assert.equal(taskCount, 2);
+		assert.equal(task.id, 0);
+
+		const event = result.logs[0].args;
+		assert.equal(event.id.toNumber(), 1);
+	});
 });

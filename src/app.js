@@ -61,6 +61,8 @@ App = {
 			const taskContent = task[1];
 			const taskCompleted = task[2];
 
+			if (!taskId) continue;
+
 			const $newTemp = $taskTmp.clone();
 
 			$newTemp.find(".content").html(taskContent);
@@ -69,6 +71,9 @@ App = {
 				.prop("name", taskId)
 				.prop("checked", taskCompleted)
 				.on("click", App.toggleCompleted);
+			$newTemp.find("#delete").on("click", () => {
+				App.deleteTask(taskId);
+			});
 
 			if (taskCompleted) {
 				$("#completedTaskList").append($newTemp);
@@ -91,6 +96,12 @@ App = {
 		App.setLoading(true);
 		const taskId = e.target.name;
 		await App.todoList.toggleCompleted(taskId, { from: App.account[0] });
+		window.location.reload();
+	},
+
+	deleteTask: async (id) => {
+		App.setLoading(true);
+		await App.todoList.deleteTask(id, { from: App.account[0] });
 		window.location.reload();
 	},
 
