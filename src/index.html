@@ -19,32 +19,29 @@
     <![endif]-->
 
 		<style>
-			main {
-				margin-top: 60px;
+			section {
+				width: 800px;
 			}
 
 			#content {
 				display: none;
 			}
 
-			form {
-				width: 350px;
-				margin-bottom: 10px;
+			#account {
+				color: #aaa;
 			}
 
-			ul {
-				margin-bottom: 0px;
+			#list1 .form-control {
+				border-color: transparent;
 			}
 
-			.taskTemplate {
-				display: flex;
-				justify-content: space-between;
-				margin: 16px 0;
+			#list1 .form-control:focus {
+				border-color: transparent;
+				box-shadow: none;
 			}
 
-			#completedTaskList .content {
-				color: grey;
-				text-decoration: line-through;
+			#list1 .select-input.form-control[readonly]:not([disabled]) {
+				background-color: #fbfbfb;
 			}
 		</style>
 	</head>
@@ -53,35 +50,68 @@
 		<nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
 			<a class="navbar-brand col-sm-3 col-md-2 mr-0" href="http://github.com/code-knayam" target="_blank">Eth Todo
 				List</a>
-			<ul class="navbar-nav px-3">
-				<li class="nav-item text-nowrap d-none d-sm-none d-sm-block">
-					<small><a class="nav-link" href="#"><span id="account"></span></a></small>
-				</li>
-			</ul>
+			<span id="account"></span></a></small>
 		</nav>
 		<div class="container-fluid">
 			<div class="row">
 				<main role="main" class="col-lg-12 d-flex justify-content-center">
-					<div id="loader" class="text-center">
-						<p class="text-center">Loading...</p>
-					</div>
-					<div id="content">
-						<form onSubmit="App.createTask(); return false;">
-							<input id="newTask" type="text" class="form-control" placeholder="Add task..." required>
-							<input type="submit" hidden="">
-						</form>
-						<ul id="taskList" class="list-unstyled">
-							<div class="taskTemplate" class="checkbox" style="display: none">
-								<label>
-									<input type="checkbox" />
-									<span class="content">Task content goes here...</span>
-								</label>
-								<button id="delete">Delete</button>
+
+					<section class="vh-100">
+						<div class="container py-5 h-100">
+							<div class="row d-flex justify-content-center align-items-center h-100">
+								<div class="col">
+									<div class="card" id="list1" style="border-radius: .75rem; background-color: #eff1f2;">
+										<div class="card-body py-4 px-4 px-md-5 text-center">
+
+											<p class="h1 text-center mt-3 mb-4 pb-3 text-primary">
+												<i class="fas fa-check-square me-1"></i>
+												<u>Eth ToDo List</u>
+											</p>
+
+											<div id="loader" class="spinner-border" role="status">
+											</div>
+
+											<div id="content">
+												<div class="pb-2">
+													<div class="card">
+														<div class="card-body">
+															<div class="d-flex flex-row align-items-center">
+																<input id="newTask" type="text" class="form-control form-control-lg"
+																	placeholder="Add new task..." autocomplete="off">
+																<div>
+																	<button type="button" class="btn btn-primary" onclick="App.createTask()">Add</button>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+
+												<hr class="my-4">
+
+												<ul style="display: none;"
+													class="taskTemplate list-group list-group-horizontal rounded-0 bg-transparent">
+													<li
+														class="list-group-item d-flex align-items-center ps-0 pe-3 py-1 rounded-0 border-0 bg-transparent">
+														<div class="form-check">
+															<input class="taskCheckbox form-check-input me-0" type="checkbox" value=""
+																name="taskCheckbox" aria-label="..." />
+														</div>
+													</li>
+													<li
+														class="list-group-item px-3 py-1 d-flex align-items-center flex-grow-1 border-0 bg-transparent">
+														<p class="taskName lead fw-normal mb-0">Buy groceries for next
+															week</p>
+													</li>
+												</ul>
+
+												<div id="taskList"></div>
+											</div>
+										</div>
+									</div>
+								</div>
 							</div>
-						</ul>
-						<ul id="completedTaskList" class="list-unstyled">
-						</ul>
-					</div>
+						</div>
+					</section>
 				</main>
 			</div>
 		</div>

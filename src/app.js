@@ -12,6 +12,13 @@ App = {
 	loadWeb3: async () => {
 		if (window.ethereum) {
 			window.web3 = new Web3(ethereum);
+			try {
+				// Request account access if needed
+				await ethereum.enable();
+				// Acccounts now exposed
+			} catch (error) {
+				// User denied account access...
+			}
 		}
 		// Legacy dapp browsers...
 		else if (window.web3) {
@@ -43,7 +50,7 @@ App = {
 		}
 
 		App.setLoading(true);
-
+		console.log(App.account);
 		$("#account").html(App.account[0]);
 
 		await App.renderTasks();
@@ -60,32 +67,32 @@ App = {
 			const taskId = task[0].toNumber();
 			const taskContent = task[1];
 			const taskCompleted = task[2];
-			console.log(task);
+
 			if (!taskId) continue;
 
 			const $newTemp = $taskTmp.clone();
 
-			$newTemp.find(".content").html(taskContent);
+			$newTemp.find(".taskName").html(taskContent);
 			$newTemp
 				.find("input")
 				.prop("name", taskId)
 				.prop("checked", taskCompleted)
 				.on("click", App.toggleCompleted);
-			$newTemp.find("#delete").on("click", () => {
-				App.deleteTask(taskId);
-			});
 
 			if (taskCompleted) {
-				$("#completedTaskList").append($newTemp);
-			} else {
-				$("#taskList").append($newTemp);
+				$newTemp.find(".taskCheckbox").prop("checked", true);
+				$newTemp.find(".taskName").addClass("text-decoration-line-through");
 			}
 
+			$("#taskList").append($newTemp);
 			$newTemp.show();
 		}
 	},
 
 	createTask: async () => {
+		if (App.loading) {
+			return;
+		}
 		App.setLoading(true);
 		const content = $("#newTask").val();
 		await App.todoList.createTask(content, { from: App.account[0] });
