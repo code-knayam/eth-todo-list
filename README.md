@@ -23,6 +23,4 @@ In terminal -
 
 ## UI
 
-![Task Demo](./data/image.png)
-
-![Loading Demo](./data/image-1.png)
+![demo image](./data/image.png)
