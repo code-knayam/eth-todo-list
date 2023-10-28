@@ -23,4 +23,4 @@ In terminal -
 
 ## UI
 
-![demo image](https://github.com/code-knayam/eth-todo-list/blob/main/data/image.png)
+![demo image](https://github.com/code-knayam/eth-todo-list/blob/main/data/image.png?raw=true)
